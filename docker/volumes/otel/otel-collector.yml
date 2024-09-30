@@ -1,0 +1,67 @@
+receivers:
+  otlp:
+    protocols:
+      http:
+        endpoint: 0.0.0.0:55680
+      grpc:
+        endpoint: 0.0.0.0:4317
+
+exporters:
+  otlp:
+    endpoint: '${COLLECTOR_GATEWAY_ENDPOINT}'
+    tls:
+      insecure: true
+  awss3:
+    s3uploader:
+      region: 'local'
+      s3_bucket: 'test'
+      s3_prefix: 'metric'
+      s3_partition: 'minute'
+      endpoint: 'http://storage:5000/s3'
+      disable_ssl: true
+  debug:
+    verbosity: detailed
+    sampling_initial: 5
+    sampling_thereafter: 200
+    use_internal_logger: false
+  file:
+    path: /data/otel_logs/collector.txt # Store logs in the mounted volume
+
+processors:
+
+extensions:
+  zpages:
+    endpoint: :55679
+  health_check:
+    endpoint: :13133
+
+service:
+  extensions: [zpages, health_check]
+  telemetry:
+    logs:
+      level: 'debug'
+  pipelines:
+    logs:
+      receivers: [otlp]
+      exporters: [
+          # awss3,
+          # otlp,
+          debug,
+          file,
+        ]
+    traces:
+      receivers: [otlp]
+      exporters: [
+          # awss3,
+          # otlp,
+          debug,
+          file,
+        ]
+    metrics:
+      receivers: [otlp]
+      exporters: [
+          # awss3,
+          otlp,
+          file,
+          # debug,
+        ]

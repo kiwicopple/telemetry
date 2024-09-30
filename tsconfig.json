@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "module": "esnext", // Or "commonjs" if you're sticking with CommonJS
+    "target": "esnext",
+    "jsx": "react",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}

@@ -1,9 +1,10 @@
 {
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.12.0/.schema/devbox.schema.json",
-  "packages": ["bun@latest", "deno@latest"],
+  "packages": ["bun@latest", "deno@latest", "clickhouse@latest"],
   "shell": {
     "init_hook": ["echo 'Welcome to devbox!' > /dev/null"],
     "scripts": {
+      "ch": ["clickhouse-client --port 9004"],
       "otel:gen": ["deno --allow-all scripts/gen.js"],
       "infra:up": [
         "docker compose -f ./docker/docker-compose.yml -f ./docker/docker-compose.s3.yml -f ./docker/docker-compose.otel.yml up -d"

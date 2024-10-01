@@ -49,6 +49,54 @@
         }
       }
     },
+    "clickhouse@latest": {
+      "last_modified": "2024-09-10T15:01:03Z",
+      "resolved": "github:NixOS/nixpkgs/5ed627539ac84809c78b2dd6d26a5cebeb5ae269#clickhouse",
+      "source": "devbox-search",
+      "version": "24.3.7.30",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/qrqka66s62ifzddddf4wpnsw1p8hibi9-clickhouse-24.3.7.30",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/qrqka66s62ifzddddf4wpnsw1p8hibi9-clickhouse-24.3.7.30"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/69hm0qda538jkvhz0aqxp0zxbz41v7pl-clickhouse-24.3.7.30",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/69hm0qda538jkvhz0aqxp0zxbz41v7pl-clickhouse-24.3.7.30"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/6v1ndyd829fap3j034lidd86ikgm3jfb-clickhouse-24.3.7.30",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/6v1ndyd829fap3j034lidd86ikgm3jfb-clickhouse-24.3.7.30"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/9fx87ickbfb6pz8drdfm6azrjsyz1c27-clickhouse-24.3.7.30",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/9fx87ickbfb6pz8drdfm6azrjsyz1c27-clickhouse-24.3.7.30"
+        }
+      }
+    },
     "deno@latest": {
       "last_modified": "2024-09-10T15:01:03Z",
       "resolved": "github:NixOS/nixpkgs/5ed627539ac84809c78b2dd6d26a5cebeb5ae269#deno",

@@ -26,8 +26,24 @@ exporters:
     use_internal_logger: false
   file:
     path: /data/otel_logs/collector.txt # Store logs in the mounted volume
+  clickhouse:
+    endpoint: tcp://clickhouse:9000?dial_timeout=10s&compress=lz4&async_insert=1
+    ttl: 72h
+    traces_table_name: otel_traces
+    logs_table_name: otel_logs
+    create_schema: true
+    timeout: 5s
+    database: default
+    retry_on_failure:
+      enabled: true
+      initial_interval: 5s
+      max_interval: 30s
+      max_elapsed_time: 300s
 
 processors:
+  batch:
+    timeout: 5s
+    send_batch_size: 5000
 
 extensions:
   zpages:
@@ -48,6 +64,7 @@ service:
           # otlp,
           debug,
           file,
+          clickhouse,
         ]
     traces:
       receivers: [otlp]
@@ -56,6 +73,7 @@ service:
           # otlp,
           debug,
           file,
+          clickhouse,
         ]
     metrics:
       receivers: [otlp]
@@ -64,4 +82,5 @@ service:
           otlp,
           file,
           # debug,
+          clickhouse,
         ]
